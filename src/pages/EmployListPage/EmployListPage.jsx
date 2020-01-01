@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import EmployList from './../../components/EmployList/EmployList';
 import EmployItem from './../../components/EmployItem/EmployItem';
+import { connect } from 'react-redux';
 
 class EmployListPage extends Component {
     render() {
-        var employees = [];
+        var { employees } = this.props;
         return (
             <div className="container-fluid">
                 <div className="row page-titles">
@@ -38,5 +39,10 @@ class EmployListPage extends Component {
         return result;
     }
 }
+const mapStateProps = state => {
+    return {
+        employees : state.employees
+    }
+}
 
-export default EmployListPage;
+export default connect(mapStateProps, null)(EmployListPage);
