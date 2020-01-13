@@ -12,11 +12,11 @@ const routes = [
     }, {
         path : '/employee-add',
         exact : false,
-        main : () => <EmployAdd />
+        main : ({history}) => <EmployAdd history={history}/>
     }, {
         path : '/employee-edit/:id/edit',
         exact : false,
-        main : ({match}) => <EmployAdd match={match}/>
+        main : ({match, history}) => <EmployAdd match={match} history={history}/>
     }, {
         path : '/employee-list',
         exact : false,

@@ -11601,7 +11601,7 @@ Mini sidebar
 ******************/
 @media (min-width: 769px) {
   .left-sidebar:hover {
-    left: 0px; }
+    left: -200px; }
   .navbar-header {
     margin-left: 60px;
     -ms-flex-negative: 0;

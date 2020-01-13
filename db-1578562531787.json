@@ -1,20 +1,20 @@
 {
   "employees": [
     {
-      "id": 2,
       "name": "Dư Công Thành",
       "gender": "Nam",
-      "birth": "1997/10/25",
+      "birth": "1997-10-25",
       "country": "Quảng Ninh",
-      "update_date": "2020/01/10 14:36:51"
+      "update_date": "2020/09/01\n\t14:23:07",
+      "id": 2
     },
     {
+      "id": 3,
       "name": "Dương Dương",
       "gender": "Nữ",
-      "birth": "1997/05/07",
+      "birth": "1997-07-05",
       "country": "Quảng Ninh",
-      "update_date": "2020/01/10 12:58:39",
-      "id": 3
+      "update_date": "2020/09/01 15:26:51"
     }
   ]
 }

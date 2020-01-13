@@ -5,34 +5,44 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import api from './../../utils/api';
 import { Link } from 'react-router-dom';
+import { actionFetchRequest, actionDeleteRequest } from './../../actions/index';
 
 class EmployListPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            employees : []
-        }
     }
     //call sau khi component render lần đầu
     componentDidMount() {
-        api('employees', 'GET', null).then(respon => {
-            this.setState({
-                employees: respon.data
-            })
-        });
+        this.props.getAllData();
     }
+
+    onDetele = (id) => {
+        // var { employees } =  this.state;
+        // api(`employees/${id}`, 'DELETE', null).then(respon => {
+        //     if (respon.status === 200) {
+        //         var idex = this.findId(employees, id);
+        //         if (idex !== -1) {
+        //             employees.splice(idex, 1);
+        //             this.setState({
+        //                 employees: employees
+        //             })
+        //         }
+        //     }
+        // });
+        this.props.deleteData(id);
+    }
+
     render() {
-        var { employees } = this.state;
+        var { employees } = this.props;
 
         return (
             <div className="container-fluid">
-                <div className="row page-titles">
-                    <div className="col-md-12 align-self-center text-right">
-                        <div className="d-flex justify-content-end align-items-center">
-                            <ol className="breadcrumb">
-                                <Link to="/employee-add" type="button" className="btn btn-success"> Add Employee</Link>
-                            </ol>
-                        </div>
+                <div className="card">
+                    <div className="card-header bg-success text-white">
+                        Quản lý danh sách nhân viên
+                    </div>
+                    <div className="card-body">
+                        <Link to="/employee-add" type="button" className="btn btn-success"> Thêm mới</Link>
                     </div>
                 </div>
                 <EmployList>
@@ -50,6 +60,7 @@ class EmployListPage extends Component {
                         key={index}
                         employee={employee}
                         index={index}
+                        onDetele={this.onDetele}
                     />
                 );
             });
@@ -63,4 +74,15 @@ const mapStateProps = state => {
     }
 }
 
-export default connect(mapStateProps, null)(EmployListPage);
+const mapDispatch = (dispatch, props) => {
+    return {
+        getAllData : () => {
+            dispatch(actionFetchRequest());
+        },
+        deleteData : (id) => {
+            dispatch(actionDeleteRequest(id));
+        }
+    }
+}
+
+export default connect(mapStateProps, mapDispatch)(EmployListPage);

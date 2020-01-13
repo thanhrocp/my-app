@@ -17,13 +17,14 @@ class EmployList extends Component {
                                             <th>Giới tính</th>
                                             <th>Ngày sinh</th>
                                             <th>Quê quán</th>
+                                            <th>Cập nhật</th>
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td></td>
-                                            <td><input className="form-control" placeholder="Enter keyword" /></td>
+                                            <td><input className="form-control" placeholder="Nhập tên cần tìm" /></td>
                                             <td>
                                                 <select className="form-control">
                                                     <option value={-1}>--- Tất cả ---</option>
@@ -31,6 +32,7 @@ class EmployList extends Component {
                                                     <option value={0}>- Nữ</option>
                                                 </select>
                                             </td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

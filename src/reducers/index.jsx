@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import employees from './employees';
+import employEdit from './employEdit';
 
 const appReducers = combineReducers({
-    employees
+    employees,
+    employEdit
 });
 
 export default appReducers;

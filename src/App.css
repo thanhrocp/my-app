@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-pointer:hover {
+  color: white;
+}
+.ml-5 {
+  margin-right: 5px;
+}
+.w-10 {
+  width: 10%;
+}
+.w-15 {
+  width: 15%;
+}
+.w-5 {
+  width: 5%;
+}

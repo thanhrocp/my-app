@@ -14,7 +14,7 @@ const menus = [
 ];
 
 const MenuLink = ({lable, to, activeExact}) => {
-    var icon = lable == 'Trang chủ' ? 'fa fa-home' : 'fa fa-user';
+    var icon = lable == 'Trang chủ' ? 'fa fa-home text-success' : 'fa fa-user text-warning';
     return (
         <Route
             path={to}
@@ -39,8 +39,7 @@ class Menu extends Component {
         return (
             <aside className="left-sidebar">
                 <div className="d-flex no-block nav-text-box align-items-center">
-                    <span><img src="elegant/assets/images/logo-icon.png" alt="elegant admin template" /></span>
-                    <a className="waves-effect waves-dark ml-auto hidden-sm-down"><i className="ti-menu" /></a>
+                    <a className="waves-effect waves-dark ml-auto hidden-sm-down"><i className="fa fa-arrows" /></a>
                     <a className="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up"><i className="ti-menu ti-close" /></a>
                 </div>
                 <div className="scroll-sidebar">
