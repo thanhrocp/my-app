@@ -7,13 +7,16 @@ class EmployList extends Component {
                 <div className="col-12">
                     <div className="card">
                         <div className="card-body">
-                            <h4 className="card-title">Basic Table</h4>
+                            <h4 className="card-title">
+                                
+                            </h4>
                             <div className="table-responsive">
                                 <table className="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>#No</th>
                                             <th>Họ và tên</th>
+                                            <th>Ảnh minh họa</th>
                                             <th>Giới tính</th>
                                             <th>Ngày sinh</th>
                                             <th>Quê quán</th>
@@ -25,6 +28,7 @@ class EmployList extends Component {
                                         <tr>
                                             <td></td>
                                             <td><input className="form-control" placeholder="Nhập tên cần tìm" /></td>
+                                            <td></td>
                                             <td>
                                                 <select className="form-control">
                                                     <option value={-1}>--- Tất cả ---</option>

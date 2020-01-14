@@ -6,6 +6,7 @@ import axios from 'axios';
 import api from './../../utils/api';
 import { Link } from 'react-router-dom';
 import { actionFetchRequest, actionDeleteRequest } from './../../actions/index';
+import { ExportCSV } from './ExportCSVwhich';
 
 class EmployListPage extends Component {
     constructor(props) {
@@ -17,18 +18,6 @@ class EmployListPage extends Component {
     }
 
     onDetele = (id) => {
-        // var { employees } =  this.state;
-        // api(`employees/${id}`, 'DELETE', null).then(respon => {
-        //     if (respon.status === 200) {
-        //         var idex = this.findId(employees, id);
-        //         if (idex !== -1) {
-        //             employees.splice(idex, 1);
-        //             this.setState({
-        //                 employees: employees
-        //             })
-        //         }
-        //     }
-        // });
         this.props.deleteData(id);
     }
 
@@ -42,7 +31,7 @@ class EmployListPage extends Component {
                         Quản lý danh sách nhân viên
                     </div>
                     <div className="card-body">
-                        <Link to="/employee-add" type="button" className="btn btn-success"> Thêm mới</Link>
+                        <Link to="/employee-add" type="button" className="btn btn-success mr-10"> Thêm mới</Link><ExportCSV csvData={employees} fileName="CustomerList"/>
                     </div>
                 </div>
                 <EmployList>

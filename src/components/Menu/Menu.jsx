@@ -15,6 +15,7 @@ const menus = [
 
 const MenuLink = ({lable, to, activeExact}) => {
     var icon = lable == 'Trang chủ' ? 'fa fa-home text-success' : 'fa fa-user text-warning';
+    var titleName = lable == 'Trang chủ' ? 'Trang chủ' : 'Quản lý nhân viên';
     return (
         <Route
             path={to}
@@ -22,8 +23,8 @@ const MenuLink = ({lable, to, activeExact}) => {
             children={({match}) => {
                 var active = match ? 'waves-effect waves-dark bg-danger' : '';
                 return (
-                    <li> 
-                        <Link className={active} aria-expanded="false" to={to}>
+                    <li>
+                        <Link className={active} aria-expanded="false" to={to} title={titleName}>
                             <i className={icon} />
                             <span className="hide-menu">{lable}</span>
                         </Link>

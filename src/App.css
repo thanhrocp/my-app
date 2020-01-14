@@ -43,8 +43,8 @@
 .cursor-pointer:hover {
   color: white;
 }
-.ml-5 {
-  margin-right: 5px;
+.mr-10 {
+  margin-right: 10px;
 }
 .w-10 {
   width: 10%;

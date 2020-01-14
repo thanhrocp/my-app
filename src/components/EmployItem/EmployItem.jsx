@@ -21,6 +21,9 @@ class EmployItem extends Component {
             <tr>
                 <td className="w-5">{++index}</td>
                 <td>{employee.name}</td>
+                <td>
+                    <img src={`upload/image/${employee.avatar}`} width="150px" height="150px" alt="Avatar nhân vật"/>
+                </td>
                 <td className="w-10">
                     <span className={`label label-${classGender}`}>
                         { nameGender }

@@ -10,6 +10,7 @@ class EmployeeAdd extends Component {
         this.state = {
             id : '',
             txtName: '',
+            txtAvatar : '',
             txtGender : 'Nam',
             txtBirth : '',
             txtCountry: ''
@@ -26,16 +27,6 @@ class EmployeeAdd extends Component {
         var { match } = this.props; 
         if (match) {
             var id = match.params.id;
-            // api(`employees/${id}`, 'GET', null).then((respon) => {
-            //     var data = respon.data;
-            //     this.setState({
-            //         id : data.id,
-            //         txtName : data.name,
-            //         txtGender : data.gender,
-            //         txtBirth : this.convertDate(data.birth),
-            //         txtCountry : data.country
-            //     })
-            // });
             this.props.editEmployee(id);
         }
     }
@@ -46,6 +37,7 @@ class EmployeeAdd extends Component {
             this.setState({
                 id : employEdit.id,
                 txtName : employEdit.name,
+                txtAvatar : employEdit.avatar,
                 txtGender : employEdit.gender,
                 txtBirth : this.convertDate(employEdit.birth),
                 txtCountry : employEdit.country
@@ -85,27 +77,26 @@ class EmployeeAdd extends Component {
         } else {
             s = h;
         }
+
         return s;
     }
 
     isValidDate(dateString) {
-        // First check for the pattern
+        // kiểm tra định dạng ngày, tháng, năm.
         if(!/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(dateString))
             return false;
 
-        // Parse the date parts to integers
+        // lấy giá trị
         var parts = dateString.split("/");
         var year = parseInt(parts[0], 10);
         var month = parseInt(parts[1], 10);
         var day = parseInt(parts[2], 10);
 
-        // Check the ranges of month and year
         if(year < 1000 || year > 3000 || month == 0 || month > 12)
             return false;
 
         var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 
-        // Adjust for leap years
         if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
             monthLength[1] = 29;
 
@@ -116,7 +107,7 @@ class EmployeeAdd extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         // console.log(this.state);
-        var { id, txtName, txtGender, txtBirth, txtCountry } = this.state;
+        var { id, txtName, txtAvatar, txtGender, txtBirth, txtCountry } = this.state;
         var { history } = this.props;
         if (txtName == '') 
             return alert('Tên không được để trống');
@@ -130,39 +121,22 @@ class EmployeeAdd extends Component {
         var employees = {
             id : id,
             name : txtName,
+            avatar : txtAvatar,
             gender : txtGender,
             birth : txtBirth,
             country : txtCountry,
             update_date : this.dateTime()
         }
         if(id) {
-            // api(`employees/${id}`, 'PUT', {
-            //     name : txtName,
-            //     gender : txtGender,
-            //     birth : txtBirth,
-            //     country : txtCountry,
-            //     update_date : this.dateTime()
-            // }).then(respon => {
-            //     history.goBack();
-            // }); 
             this.props.updateData(employees);
         } else {
-            // api('employees', 'POST', {
-            //     name : txtName,
-            //     gender : txtGender,
-            //     birth : txtBirth,
-            //     country : txtCountry,
-            //     update_date : this.dateTime()
-            // }).then(respon => {
-            //     history.goBack();
-            // });
             this.props.addEmployee(employees);
         }
         history.goBack();
     }
 
     render() {
-        var { txtName, txtGender, txtBirth, txtCountry } = this.state;
+        var { txtName, txtGender, txtBirth, txtCountry, txtAvatar } = this.state;
         return (
             <div className="col-lg-12 col-xlg-12 col-md-12">
                 <div className="card">
@@ -175,7 +149,7 @@ class EmployeeAdd extends Component {
                 </div>
                 <div className="card">
                     <div className="card-body">
-                        <form className="form-horizontal form-material" onSubmit={this.onSubmit}>
+                        <form className="form-horizontal form-material" onSubmit={this.onSubmit} enctype="multipart/form-data">
                             <div className="form-group">
                                 <label className="col-md-12">Họ và tên</label>
                                 <div className="col-md-12">
@@ -185,6 +159,19 @@ class EmployeeAdd extends Component {
                                         placeholder="Nhập họ tên của bạn" 
                                         className="form-control form-control-line"
                                         value={txtName}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
+                            </div>
+                             <div className="form-group">
+                                <label className="col-sm-12">Ảnh nhân vật</label>
+                                <div className="col-sm-12">
+                                    <input 
+                                        type="text" 
+                                        name="txtAvatar" 
+                                        placeholder="URL Img or Image name" 
+                                        className="form-control form-control-line"
+                                        value={txtAvatar}
                                         onChange={this.onChange}
                                     />
                                 </div>
@@ -212,7 +199,7 @@ class EmployeeAdd extends Component {
                                         className="form-control form-control-line" 
                                         id="datepicker"
                                         value={txtBirth}
-                                        placeholder="MM/DD/YYYY"
+                                        placeholder="YYYY/MM/DD"
                                         onChange={this.onChange}
                                     />
                                 </div>

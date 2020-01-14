@@ -3,6 +3,7 @@
     {
       "id": 2,
       "name": "Dư Công Thành",
+      "avatar": "thanh.jpg",
       "gender": "Nam",
       "birth": "1997/10/25",
       "country": "Quảng Ninh",
@@ -10,11 +11,21 @@
     },
     {
       "name": "Dương Dương",
+      "avatar": "duong.jpg",
       "gender": "Nữ",
       "birth": "1997/05/07",
       "country": "Quảng Ninh",
       "update_date": "2020/01/10 12:58:39",
       "id": 3
+    },
+    {
+      "id": 4,
+      "name": "Dương Liễu",
+      "avatar": "thanh.jpg",
+      "gender": "Nữ",
+      "birth": "1997/05/07",
+      "country": "Quảng Ninh",
+      "update_date": "2020/01/14 10:42:36"
     }
   ]
 }
